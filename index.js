@@ -4,6 +4,8 @@ const compression = require("compression");
 
 app.use(compression());
 
+app.use(express.static("public"));
+
 if (process.env.NODE_ENV != "production") {
     app.use(
         "/bundle.js",
