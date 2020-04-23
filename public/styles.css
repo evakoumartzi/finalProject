@@ -6,3 +6,8 @@ body {
     font-family: fantasy;
     font-size: 2em;
 }
+
+#board {
+    width: 900px;
+    height: 900px;
+}
