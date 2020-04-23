@@ -23,7 +23,7 @@
             "formula": "s"
         },
         {
-            "graph": "",
+            "graph": "2*x+5",
             "formula": "f"
         },
         {
@@ -31,7 +31,7 @@
             "formula": "w"
         },
         {
-            "graph": "2*x+5",
+            "graph": "",
             "formula": "t"
         }
     ],

@@ -11,3 +11,21 @@ body {
     width: 900px;
     height: 900px;
 }
+
+.color {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+}
+
+.red {
+    background-color: maroon;
+}
+
+.green {
+    background-color: green;
+}
+
+.blue {
+    background-color: blue;
+}

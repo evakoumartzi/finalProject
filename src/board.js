@@ -12,6 +12,8 @@ export default function Board() {
     const [formulas, setFormulas] = useState([]);
     var board;
     var plots = [];
+    let colorArray = ["blue", "green", "red"];
+    let colorPicked;
 
     useEffect(() => {
         boardInit();
@@ -89,6 +91,7 @@ export default function Board() {
         boardInit();
         let functionArray = equations[index];
         let formulaArray = [];
+
         console.log("fArray", functionArray, "fIndex", functionIndex);
         for (let x in functionArray) {
             if (functionArray[x].graph != "") {
@@ -97,9 +100,20 @@ export default function Board() {
                     [functionArray[x].graph],
                     {
                         withLabel: false,
+                        strokeColor: colorArray[x],
+                        strokeWidth: 5,
+
                         name: `${functionArray[x]}`,
                     }
                 );
+                plots[x].on("mouseover", function () {
+                    // console.log("mouseover", colorArray[x]);
+                    colorPicked = colorArray[x];
+                });
+                plots[x].on("mouseout", function () {
+                    // console.log("mouseout", colorArray[x]);
+                    colorPicked = null;
+                });
             }
             formulaArray.push(functionArray[x].formula);
         }
@@ -111,13 +125,37 @@ export default function Board() {
         loadFunctions(++functionIndex);
     };
 
+    const onMouseEnterHandler = (index) => {
+        console.log("red!", index);
+    };
+
+    window.addEventListener("mouseup", () => {
+        if (colorPicked) {
+            console.log("picked color", colorPicked);
+        }
+    });
+
     return (
         <div>
             <div id="board" className="jxgbox"></div>
             {/* <h4>{formulas[0]}</h4> */}
             <div>
-                {formulas.map((formula) => {
-                    return <h4 key={formula}>{formula}</h4>;
+                {formulas.map((i) => {
+                    return (
+                        <div key={i}>
+                            <h4>{i}</h4>
+                            <div
+                                className="color red"
+                                id={`n${i} red`}
+                                onMouseEnter={() => onMouseEnterHandler(i)}
+                            ></div>
+                            <div
+                                className="color green"
+                                id={`n${i} green`}
+                            ></div>
+                            <div className="color blue" id={`n${i} blue`}></div>
+                        </div>
+                    );
                 })}
             </div>
             <button onClick={handleClick}>load next</button>
