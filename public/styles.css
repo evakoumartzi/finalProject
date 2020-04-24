@@ -1,10 +1,14 @@
 body {
-    background-color: coral;
+    background-color: lightskyblue;
 }
 
-#firstMathjax {
-    font-family: fantasy;
+.mathjax {
+    color: blue;
     font-size: 2em;
+}
+
+#app {
+    display: flex;
 }
 
 #board {
@@ -12,20 +16,25 @@ body {
     height: 900px;
 }
 
-.color {
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
+#board_navigationbar {
+    visibility: hidden;
 }
 
-.red {
-    background-color: maroon;
+.equationDiv {
+    background-color: hotpink;
 }
 
-.green {
-    background-color: green;
+.equations {
+    color: darkslategrey;
+    width: 100px;
+    height: 33px;
+    /* background-color: #12542366; */
 }
 
-.blue {
-    background-color: blue;
+.disable-selection {
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* Internet Explorer */
+    -khtml-user-select: none; /* KHTML browsers (e.g. Konqueror) */
+    -webkit-user-select: none; /* Chrome, Safari, and Opera */
+    -webkit-touch-callout: none; /* Disable Android and iOS callouts*/
 }

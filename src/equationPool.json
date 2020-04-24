@@ -1,56 +1,175 @@
 [
     [
         {
+            "set": 0,
             "graph": "nthroot(x, 3)",
-            "formula": "a = i = \\pi"
+            "formula": "nth root"
         },
         {
             "graph": "1/x",
-            "formula": "a = i = \\"
+            "formula": "1/x"
         },
         {
             "graph": "2*x+5",
-            "formula": "a = i "
+            "formula": "2x+5 "
         },
         {
             "graph": "",
-            "formula": "a "
+            "formula": "x square"
         }
     ],
     [
         {
-            "graph": "nthroot(x, 3)",
-            "formula": "s"
+            "set": 1,
+            "graph": "log(x)",
+            "formula": "nope"
         },
         {
-            "graph": "2*x+5",
-            "formula": "f"
+            "graph": "pow(E,x)",
+            "formula": "e eis th x"
         },
         {
-            "graph": "x+3",
-            "formula": "w"
+            "graph": "pow(x,2)+2*x-1",
+            "formula": "x square +2x -1"
         },
         {
             "graph": "",
-            "formula": "t"
+            "formula": "sinx"
         }
     ],
     [
+        { "set": 2, "graph": "cot(x)", "formula": "cot(x)" },
         {
-            "graph": "nthroot(x, 3)",
-            "formula": "i"
-        },
-        {
-            "graph": "1/x",
-            "formula": "p"
-        },
-        {
-            "graph": "2*pow(x,2)-pow(x,4)",
-            "formula": "r"
+            "graph": "2*pow(x,2)",
+            "formula": "2xtetagono"
         },
         {
             "graph": "pow(x, 1/3) - 1",
+            "formula": "trith riza -1"
+        },
+        {
+            "graph": "",
+            "formula": "circle"
+        }
+    ],
+    [
+        { "set": 3, "graph": "9-pow(x, 2)", "formula": "9- x square" },
+        {
+            "graph": "pow(x,3)",
+            "formula": "x triths"
+        },
+        {
+            "graph": "pow(2,x)",
+            "formula": "2 in the xth"
+        },
+        {
+            "graph": "",
+            "formula": "9+x square"
+        }
+    ],
+    [
+        { "set": 4, "graph": "sin(3*x)", "formula": "sin(3x)" },
+        {
+            "graph": "cos(3*x)",
+            "formula": "cos 3x"
+        },
+        {
+            "graph": "-sqrt(x)",
+            "formula": "-sqrt(x)"
+        },
+        {
+            "graph": "",
+            "formula": "sqrt(x)"
+        }
+    ],
+    [
+        { "set": 5, "graph": "tan(x)", "formula": "tan(x)" },
+        {
+            "graph": "|x|",
+            "formula": "p"
+        },
+        {
+            "graph": "pow(x,2)-pow(x,4)-8",
+            "formula": "nope"
+        },
+        {
+            "graph": "cot(x)",
             "formula": "q"
+        }
+    ],
+    [
+        { "set": 6, "graph": "-2", "formula": "i" },
+        {
+            "graph": "-sqrt(9-pow(x,2))",
+            "formula": "circle"
+        },
+        {
+            "graph": "sqrt(9-pow(x,2))",
+            "formula": "circle"
+        },
+        {
+            "graph": "",
+            "formula": "q"
+        }
+    ],
+    [
+        { "set": 7, "graph": "sqrt(pow(x,2))", "formula": "i" },
+        {
+            "graph": "-sqrt(pow(x,2))",
+            "formula": "apolyto!?"
+        },
+        {
+            "graph": "",
+            "formula": "r"
+        },
+        {
+            "graph": "",
+            "formula": "q"
+        }
+    ],
+    [
+        { "set": 8, "graph": "sqrt(4-pow(2/3*x,2))", "formula": "ellipse" },
+        {
+            "graph": "-sqrt(4-pow(2/3*x,2))",
+            "formula": "ellipse"
+        },
+        {
+            "graph": "y+1",
+            "formula": "r"
+        },
+        {
+            "graph": "",
+            "formula": "q"
+        }
+    ],
+    [
+        { "set": 9, "graph": "sqrt(4+pow(2/3*x,2))", "formula": "hyperbolup" },
+        {
+            "graph": "-sqrt(4+pow(2/3*x,2))",
+            "formula": "hyperboldown"
+        },
+        {
+            "graph": "cos(2*P/x)",
+            "formula": "r"
+        },
+        {
+            "graph": "",
+            "formula": "q"
+        }
+    ],
+    [
+        { "set": 10, "graph": "pow(x,3)", "formula": "x triths" },
+        {
+            "graph": "pow(x,3)-2",
+            "formula": "x triths -2"
+        },
+        {
+            "graph": "2*x",
+            "formula": "2x"
+        },
+        {
+            "graph": "",
+            "formula": "sqrt(x)"
         }
     ]
 ]

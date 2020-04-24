@@ -1,11 +1,13 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, Component } from "react";
 import equations from "./equationPool.json";
-// import ProfilePic from "./profilePic";
-// import BioEditor from "./bioEditor";
-// import { ReactReduxContext } from "react-redux";
-// import axios from "./axios";
-console.log("hello");
+// import { useDrag } from "react-dnd";
+// import { ItemTypes } from "./Constants";
+import Draggable, { DraggableCore } from "react-draggable"; // Both at the same time
+
+// import { Draggable, Droppable } from "react-drag-and-drop";
+
 let functionIndex = 0;
+let graphPicked, functionPicked;
 
 export default function Board() {
     // console.log(equations.firstSet.graph);
@@ -13,38 +15,35 @@ export default function Board() {
     var board;
     var plots = [];
     let colorArray = ["blue", "green", "red"];
-    let colorPicked;
 
     useEffect(() => {
         boardInit();
 
         loadFunctions(functionIndex);
 
-        //     var plot1 = board.create("functiongraph", ["nthroot(x, 3)"], {
-        //         withLabel: false,
-        //         name: "nthroot(x,3)",
-        //     });
-        //     var plot2 = board.create("functiongraph", ["1/x"], {
-        //         withLabel: false,
-        //         name: "cbrt(x)+1",
-        //         strokeColor: "black",
-        //     });
-        //     var plot3 = board.create(
-        //         "functiongraph",
-        //         [(x) => Math.pow(x, 1 / 3) - 1],
-        //         {
-        //             withLabel: false,
-        //             name: "Math.pow(x, 1/3) - 1",
-        //             strokeColor: "red",
-        //             strokeWidth: 3,
-        //             label: { position: "rt", offset: [-100, -20] },
-        //         }
-        //     );
-        //     var plot4 = board.create("functiongraph", ["2*pow(x,2)-pow(x,4)"], {
-        //         withLabel: false,
-        //         name: "nthroot(x,3)",
-        //     });
-        // }
+        window.addEventListener("mouseup", () => {
+            if (graphPicked && functionPicked) {
+                console.log(
+                    "graph:   ",
+                    graphPicked,
+                    "\nfunction:",
+                    functionPicked
+                );
+                // compare if function matches graph
+                checkMatch(graphPicked, functionPicked);
+            } else {
+                console.log(
+                    "g:",
+                    graphPicked != null,
+                    "f:",
+                    functionPicked != null
+                );
+                // if (!functionPicked) console.log("no function picked");
+                // if (!graphPicked) console.log("no color picked");
+            }
+            graphPicked = null;
+            functionPicked = null;
+        });
     }, []);
 
     function boardInit() {
@@ -106,54 +105,110 @@ export default function Board() {
                         name: `${functionArray[x]}`,
                     }
                 );
+
+                //choose function
                 plots[x].on("mouseover", function () {
                     // console.log("mouseover", colorArray[x]);
-                    colorPicked = colorArray[x];
+                    if (!graphPicked) {
+                        graphPicked = colorArray[x];
+                    } else {
+                        graphPicked = null;
+                    }
                 });
+
+                //drop
                 plots[x].on("mouseout", function () {
                     // console.log("mouseout", colorArray[x]);
-                    colorPicked = null;
+                    graphPicked = null;
                 });
             }
             formulaArray.push(functionArray[x].formula);
         }
-        console.log(formulaArray);
         setFormulas(formulaArray);
     }
 
     const handleClick = () => {
         loadFunctions(++functionIndex);
+        console.log("set:", functionIndex);
     };
 
-    const onMouseEnterHandler = (index) => {
-        console.log("red!", index);
+    const handleEquationSelect = (eq) => {
+        console.log(eq);
+        functionPicked = eq;
     };
 
-    window.addEventListener("mouseup", () => {
-        if (colorPicked) {
-            console.log("picked color", colorPicked);
+    const checkMatch = (graph, funct) => {
+        console.log("checking match", graph, funct);
+        // colorArray = ["blue", "green", "red"];
+        const indeeex = colorArray.findIndex((element) => element == graph);
+        console.log("indeeex", indeeex);
+        if (equations[functionIndex][indeeex].formula == funct) {
+            alert("maaaaatch");
+        } else {
+            alert("booooooo!");
         }
-    });
+    };
+
+    // old stuffs
+    {
+        // const dragStart = () => {
+        //     event.dataTransfer.setData("drag-item", props.dataItem);
+        // };
+        // const handleMouseDown = (e) => {
+        //     console.log("mouse down", e);
+        // };
+        // const handleStart = (e) => {
+        //     console.log("mouse start", e);
+        // };
+        // const handleDrag = (e) => {
+        //     e.preventDefault();
+        // };
+        // const handleDrop = (e) => {
+        //     e.preventDefault();
+        //     console.log("drop", e);
+        // };
+    }
+
+    const dragOver = (e) => {
+        e.preventDefault();
+        console.log("over the board");
+    };
+
+    const drop = (e) => {
+        e.preventDefault();
+        console.log("drop on board", e);
+    };
+
+    // const itemDropped = () => {};
 
     return (
         <div>
-            <div id="board" className="jxgbox"></div>
-            {/* <h4>{formulas[0]}</h4> */}
+            {/* <DropTarget onItemDropped={itemDropped}> */}
+            {/* <Droppable> */}
+            <div
+                id="board"
+                className="jxgbox"
+                onDragOver={dragOver}
+                onDrop={drop}
+            ></div>
+            {/* </Droppable> */}
+            {/* </DropTarget> */}
             <div>
                 {formulas.map((i) => {
                     return (
-                        <div key={i}>
-                            <h4>{i}</h4>
-                            <div
-                                className="color red"
-                                id={`n${i} red`}
-                                onMouseEnter={() => onMouseEnterHandler(i)}
-                            ></div>
-                            <div
-                                className="color green"
-                                id={`n${i} green`}
-                            ></div>
-                            <div className="color blue" id={`n${i} blue`}></div>
+                        <div
+                            key={i}
+                            className="equationDiv"
+                            onMouseDown={() => handleEquationSelect(i)}
+                        >
+                            {/* <Draggable
+                                onMouseDown={handleMouseDown}
+                                onStart={handleStart}
+                                onDrag={handleDrag}
+                                onDrop={handleDrop}
+                            > */}
+                            <h4 className="equations">{i}</h4>
+                            {/* </Draggable> */}
                         </div>
                     );
                 })}

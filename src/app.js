@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import Board from "./board"; //i dont have to write.js!
 import Formulas from "./formulas.js";
-import { BrowserRouter, Route } from "react-router-dom";
+// import Formulas2 from "./formulas2";
 
+import { BrowserRouter, Route } from "react-router-dom";
 export default function App() {
     //     useEffect(() => {
 
@@ -11,17 +12,18 @@ export default function App() {
     // handleChange{
 
     // }
+    let form1 = `f(x) = \\int_{-\\infty}^\\infty
+     \\hat f(\\xi)\\,e^{2 \\pi i \\xi x}
+    \\,d\\xi`;
     return (
         <BrowserRouter>
             <Route
                 exact
                 path="/"
                 render={() => (
-                    <div>
+                    <div id="app">
                         <Board />
-                        {/* <Formulas /> */}
-                        {/* {Formulas} */}
-                        {/* <button onClick={handleChange}>next</button> */}
+                        {/* <Formulas formula={form1} /> */}
                     </div>
                 )}
             />
