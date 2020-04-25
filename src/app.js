@@ -5,16 +5,6 @@ import Formulas from "./formulas.js";
 
 import { BrowserRouter, Route } from "react-router-dom";
 export default function App() {
-    //     useEffect(() => {
-
-    //     }, []);
-
-    // handleChange{
-
-    // }
-    let form1 = `f(x) = \\int_{-\\infty}^\\infty
-     \\hat f(\\xi)\\,e^{2 \\pi i \\xi x}
-    \\,d\\xi`;
     return (
         <BrowserRouter>
             <Route
@@ -23,7 +13,6 @@ export default function App() {
                 render={() => (
                     <div id="app">
                         <Board />
-                        {/* <Formulas formula={form1} /> */}
                     </div>
                 )}
             />

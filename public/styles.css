@@ -38,3 +38,17 @@ body {
     -webkit-user-select: none; /* Chrome, Safari, and Opera */
     -webkit-touch-callout: none; /* Disable Android and iOS callouts*/
 }
+
+#pointBoard {
+    width: 100px;
+    height: 100px;
+    background-color: hotpink;
+}
+
+/* .invisible {
+    visibility: hidden;
+} */
+
+.visible {
+    visibility: visible;
+}

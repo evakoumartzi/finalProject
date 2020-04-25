@@ -2,24 +2,27 @@ import React, { useState, useEffect, Component } from "react";
 import equations from "./equationPool.json";
 // import { useDrag } from "react-dnd";
 // import { ItemTypes } from "./Constants";
-import Draggable, { DraggableCore } from "react-draggable"; // Both at the same time
-
 // import { Draggable, Droppable } from "react-drag-and-drop";
+// import Draggable, { DraggableCore } from "react-draggable";
+import Formulas from "./formulas.js";
 
-let functionIndex = 0;
+let functionIndex;
 let graphPicked, functionPicked;
+let pointCounter, mistakesCounter, bonusPoint;
+const levelAmount = 12;
+let showFinalModal = false;
+// const gameMode = ["START", "PLAYING", "FINAL"];
 
 export default function Board() {
     // console.log(equations.firstSet.graph);
     const [formulas, setFormulas] = useState([]);
-    var board;
-    var plots = [];
-    let colorArray = ["blue", "green", "red"];
+    let board;
+    let plots = [];
+    let colorArray = [];
+    let solvedArray = [];
 
     useEffect(() => {
-        boardInit();
-
-        loadFunctions(functionIndex);
+        startGame();
 
         window.addEventListener("mouseup", () => {
             if (graphPicked && functionPicked) {
@@ -32,12 +35,7 @@ export default function Board() {
                 // compare if function matches graph
                 checkMatch(graphPicked, functionPicked);
             } else {
-                console.log(
-                    "g:",
-                    graphPicked != null,
-                    "f:",
-                    functionPicked != null
-                );
+                console.log("g:", graphPicked, "f:", functionPicked != null);
                 // if (!functionPicked) console.log("no function picked");
                 // if (!graphPicked) console.log("no color picked");
             }
@@ -45,6 +43,39 @@ export default function Board() {
             functionPicked = null;
         });
     }, []);
+
+    function shuffle(array) {
+        return array.sort(() => Math.random() - 0.5);
+    }
+
+    function startGame() {
+        boardInit();
+        pointCounter = 0;
+        mistakesCounter = 0;
+        bonusPoint = true;
+        functionIndex = 0;
+        // TODO randomise colors here
+        colorArray = shuffle(["blue", "green", "red"]);
+        solvedArray = [false, false, false];
+
+        loadFunctions(functionIndex);
+    }
+
+    function nextLevel() {
+        if (functionIndex < levelAmount) {
+            console.log("sane");
+            mistakesCounter = 0;
+            bonusPoint = true;
+            functionIndex++;
+            // TODO maybe switch colors again
+            colorArray = shuffle(["blue", "green", "red"]);
+
+            solvedArray = [false, false, false];
+            loadFunctions(functionIndex);
+        } else {
+            showFinalModal = true;
+        }
+    }
 
     function boardInit() {
         board = JXG.JSXGraph.initBoard("board", {
@@ -91,30 +122,46 @@ export default function Board() {
         let functionArray = equations[index];
         let formulaArray = [];
 
-        console.log("fArray", functionArray, "fIndex", functionIndex);
+        // console.log("fArray", functionArray, "fIndex", functionIndex);
         for (let x in functionArray) {
             if (functionArray[x].graph != "") {
-                plots[x] = board.create(
-                    "functiongraph",
-                    [functionArray[x].graph],
-                    {
-                        withLabel: false,
-                        strokeColor: colorArray[x],
-                        strokeWidth: 5,
+                if (solvedArray[x] == false) {
+                    plots[x] = board.create(
+                        "functiongraph",
+                        [functionArray[x].graph],
+                        {
+                            withLabel: false,
+                            strokeColor: colorArray[x],
+                            strokeWidth: 5,
 
-                        name: `${functionArray[x]}`,
-                    }
-                );
+                            name: `${functionArray[x]}`,
+                        }
+                    );
+                    //choose function
+                    plots[x].off();
+                    plots[x].on("mouseover", function () {
+                        // console.log("mouseover", colorArray[x]);
+                        if (!graphPicked) {
+                            graphPicked = colorArray[x];
+                            console.log(graphPicked);
+                        } else if (graphPicked != colorArray[x]) {
+                            console.log("killing graphPicked");
+                            graphPicked = null;
+                        }
+                    });
+                } else {
+                    plots[x] = board.create(
+                        "functiongraph",
+                        [functionArray[x].graph],
+                        {
+                            withLabel: false,
+                            strokeColor: "gray",
+                            strokeWidth: 5,
 
-                //choose function
-                plots[x].on("mouseover", function () {
-                    // console.log("mouseover", colorArray[x]);
-                    if (!graphPicked) {
-                        graphPicked = colorArray[x];
-                    } else {
-                        graphPicked = null;
-                    }
-                });
+                            name: `${functionArray[x]}`,
+                        }
+                    );
+                }
 
                 //drop
                 plots[x].on("mouseout", function () {
@@ -128,8 +175,7 @@ export default function Board() {
     }
 
     const handleClick = () => {
-        loadFunctions(++functionIndex);
-        console.log("set:", functionIndex);
+        nextLevel();
     };
 
     const handleEquationSelect = (eq) => {
@@ -138,18 +184,46 @@ export default function Board() {
     };
 
     const checkMatch = (graph, funct) => {
-        console.log("checking match", graph, funct);
-        // colorArray = ["blue", "green", "red"];
-        const indeeex = colorArray.findIndex((element) => element == graph);
-        console.log("indeeex", indeeex);
-        if (equations[functionIndex][indeeex].formula == funct) {
-            alert("maaaaatch");
-        } else {
-            alert("booooooo!");
+        // console.log("checking match", graph, funct);
+        const index = colorArray.findIndex((element) => element == graph);
+        console.log("indeeex", index, solvedArray[index]);
+        if (solvedArray[index] == false) {
+            if (equations[functionIndex][index].formula == funct) {
+                solvedArray[index] = true;
+                console.log("&&&&&&&&&&&&&& maaaaatch", solvedArray);
+
+                let solvedAmount = 0;
+                for (let elem in solvedArray) {
+                    if (solvedArray[elem] == true) {
+                        solvedAmount++;
+                    }
+                }
+                const pointsArray = [4, 3, 2];
+                if (solvedAmount - 1 + mistakesCounter < 3) {
+                    pointCounter +=
+                        pointsArray[solvedAmount - 1 + mistakesCounter];
+                    console.log(
+                        `made ${mistakesCounter} mistakes, adding ${
+                            pointsArray[solvedAmount - 1 + mistakesCounter]
+                        } points`
+                    );
+                }
+
+                mistakesCounter = 0;
+
+                if (solvedAmount == 3) {
+                    alert("solved level uwu");
+                    if (bonusPoint) pointCounter++;
+                    nextLevel();
+                }
+            } else {
+                mistakesCounter++;
+                console.log("mistakes", mistakesCounter);
+            }
         }
     };
 
-    // old stuffs
+    // old dragging stuffs
     {
         // const dragStart = () => {
         //     event.dataTransfer.setData("drag-item", props.dataItem);
@@ -183,16 +257,14 @@ export default function Board() {
 
     return (
         <div>
-            {/* <DropTarget onItemDropped={itemDropped}> */}
-            {/* <Droppable> */}
+            <div id="pointBoard">Points: {pointCounter}</div>
+
             <div
                 id="board"
                 className="jxgbox"
                 onDragOver={dragOver}
                 onDrop={drop}
             ></div>
-            {/* </Droppable> */}
-            {/* </DropTarget> */}
             <div>
                 {formulas.map((i) => {
                     return (
@@ -201,19 +273,18 @@ export default function Board() {
                             className="equationDiv"
                             onMouseDown={() => handleEquationSelect(i)}
                         >
-                            {/* <Draggable
-                                onMouseDown={handleMouseDown}
-                                onStart={handleStart}
-                                onDrag={handleDrag}
-                                onDrop={handleDrop}
-                            > */}
-                            <h4 className="equations">{i}</h4>
-                            {/* </Draggable> */}
+                            <Formulas formula={i} />
                         </div>
                     );
                 })}
             </div>
-            <button onClick={handleClick}>load next</button>
+            <button onClick={handleClick} className="invisible">
+                load next
+            </button>
+            <button>adjust the functions</button>
+            <button onClick={startGame} className="invisible">
+                restart
+            </button>
         </div>
     );
 }
