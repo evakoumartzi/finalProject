@@ -1,7 +1,7 @@
 import React from "react";
 import Board from "./board"; //i dont have to write.js!
-import Formulas from "./formulas.js";
-// import Formulas2 from "./formulas2";
+import FamousEquations from "./famousEquations.js";
+import Adjust from "./adjust.js";
 
 import { BrowserRouter, Route } from "react-router-dom";
 export default function App() {
@@ -13,6 +13,22 @@ export default function App() {
                 render={() => (
                     <div id="app">
                         <Board />
+                    </div>
+                )}
+            />
+            <Route
+                path="/adjust"
+                render={() => (
+                    <div id="adjust">
+                        <Adjust />
+                    </div>
+                )}
+            />
+            <Route
+                path="/hallOfFame"
+                render={() => (
+                    <div id="famousEquations">
+                        <FamousEquations />
                     </div>
                 )}
             />

@@ -1,32 +1,52 @@
 [
     [
         {
-            "set": "test",
-            "graph": "nthroot(x, 3)",
-            "formula": "y =\\sqrt[n]{x^3}"
+            "set": 1,
+            "graph": "x*1",
+            "formula": "y = x"
         },
         {
-            "graph": "1/x",
-            "formula": "y = \\frac{1}{x}"
+            "graph": "-x",
+            "formula": "y = -x"
         },
         {
-            "graph": "2*x+5",
-            "formula": " y = 2x+5 "
+            "graph": "4",
+            "formula": " y = 4 "
         },
         {
             "graph": "",
-            "formula": " y = x^2 "
+            "formula": " x = 4 "
+        }
+    ],
+
+    [
+        {
+            "set": 2,
+            "graph": "pow(x,2)+2",
+            "formula": "y = x^2+2"
+        },
+        {
+            "graph": "-pow(x,2)+2",
+            "formula": "y = -x^2+2"
+        },
+        {
+            "graph": "pow(x,2)-2",
+            "formula": "y = x^2-2"
+        },
+        {
+            "graph": "",
+            "formula": "y = -x^2-2"
         }
     ],
     [
         {
-            "set": 0,
-            "graph": "nthroot(x, 3)",
-            "formula": "y =sqrt[n]{x^3}"
+            "set": 3,
+            "graph": "2*x-5",
+            "formula": "y = 2x-5"
         },
         {
-            "graph": "1/x",
-            "formula": "y = \frac{1}{x}"
+            "graph": "-2*x+5",
+            "formula": "y = -2x+5"
         },
         {
             "graph": "2*x+5",
@@ -34,185 +54,137 @@
         },
         {
             "graph": "",
-            "formula": "y = x^2"
-        }
-    ],
-    [
-        {
-            "set": 1,
-            "graph": "log(x)",
-            "formula": "nope"
-        },
-        {
-            "graph": "pow(E,x)",
-            "formula": "y = e^x"
-        },
-        {
-            "graph": "pow(x,2)+2*x-1",
-            "formula": "y = x^2+2x+1"
-        },
-        {
-            "graph": "",
-            "formula": "y = sin(x)"
-        }
-    ],
-    [
-        {
-            "set": 2,
-            "graph": "cot(x)",
-            "formula": "y = cot(x)"
-        },
-        {
-            "graph": "2*pow(x,2)",
-            "formula": "y = 2x^2"
-        },
-        {
-            "graph": "pow(x, 1/3) - 1",
-            "formula": "y =sqrt[3]{x}-1"
-        },
-        {
-            "graph": "",
-            "formula": "y =sqrt[5]{x}-1 "
-        }
-    ],
-    [
-        {
-            "set": 3,
-            "graph": "9-pow(x, 2)",
-            "formula": "y = 9 - x^2"
-        },
-        {
-            "graph": "pow(-x,3)",
-            "formula": "y = -x^3"
-        },
-        {
-            "graph": "pow(2,x)",
-            "formula": "y = 2^x"
-        },
-        {
-            "graph": "",
-            "formula": "y = x^2"
+            "formula": "y = -2x-5"
         }
     ],
     [
         {
             "set": 4,
-            "graph": "sin(3*x)",
-            "formula": "y = sin(3x)"
+            "graph": "pow(3,x)",
+            "formula": "y = 3^x"
         },
         {
+            "graph": "sqrt(x+3)",
+            "formula": "y =\\sqrt{x+3}"
+        },
+        {
+            "graph": "sqrt(x)+3",
+            "formula": "y =\\sqrt{x}+3"
+        },
+        {
+            "graph": "",
+            "formula": "y = 3^{-x}"
+        }
+    ],
+    [
+        {
+            "set": 5,
             "graph": "cos(3*x)",
-            "formula": "y = cos (3x)"
+            "formula": "y = cos(3x)"
         },
         {
-            "graph": "-sqrt(x)",
-            "formula": "y = -\\sqrt{x}"
+            "graph": "3*cos(x)",
+            "formula": "y = 3cos(x)"
         },
         {
-            "graph": "",
-            "formula": "y = \\sqrt{x}"
-        }
-    ],
-    [
-        { "set": 5, "graph": "tan(x)", "formula": "mathjax: y = tan(x)" },
-        {
-            "graph": "abs(x)",
-            "formula": "problem with |x| in graph and formula "
-        },
-        {
-            "graph": "pow(x,2)-pow(x,4)-8",
-            "formula": "y = x^2-x^4-8"
-        },
-        {
-            "graph": "cot(x)",
-            "formula": "y = cot(x)"
-        }
-    ],
-    [
-        { "set": 6, "graph": "-2", "formula": "i" },
-        {
-            "graph": "-sqrt(9-pow(x,2))",
-            "formula": "x^2+y^2 = 3 "
-        },
-        {
-            "graph": "sqrt(9-pow(x,2))",
-            "formula": "x^2+y^2 = 3"
+            "graph": "3*sin(x)",
+            "formula": "y = 3sin(x)"
         },
         {
             "graph": "",
-            "formula": "q"
+            "formula": "y = sin(3x)"
         }
     ],
     [
         {
-            "set": 7,
-            "graph": "3*sqrt(pow(x,2))",
-            "formula": "y = 3|x|"
+            "set": 6,
+            "graph": "pow(x,3)",
+            "formula": "y = x^3"
         },
         {
-            "graph": "-3*sqrt(pow(x,2))",
-            "formula": "y = -3|x|"
+            "graph": "pow(x,4)-2*pow(x,2)+1",
+            "formula": "y = x^4-2x^2+1"
         },
         {
-            "graph": "abs(x)",
-            "formula": "y = 3x"
+            "graph": "1/x",
+            "formula": "y = \\frac{1}{x}"
         },
         {
             "graph": "",
-            "formula": "y = |x|"
+            "formula": "x^2+y^2=1"
         }
     ],
+    [
+        { "set": 7, "graph": "pow(2.718281,x)", "formula": "y = e^x" },
+        {
+            "graph": "pow(2.718281,-x)",
+            "formula": "y = e^{-x}"
+        },
+        {
+            "graph": "ln(x)",
+            "formula": "y=\\ln(x)"
+        },
+        {
+            "graph": "",
+            "formula": "y=\\ln(-x)"
+        }
+    ],
+
     [
         {
             "set": 8,
-            "graph": "sqrt(4-pow(2/3*x,2))",
-            "formula": "x^2:9+y^2:4 = 1"
+            "graph": "abs(x+2)",
+            "formula": "y = |x+2|"
         },
         {
-            "graph": "-sqrt(4-pow(2/3*x,2))",
-            "formula": "-x^2:9+y^2:4 = 1"
+            "graph": "abs(x-2)",
+            "formula": "y = |x-2|"
         },
         {
-            "graph": "y+1",
-            "formula": "x = y+1"
+            "graph": "2*abs(x)",
+            "formula": "y = 2|x|"
         },
         {
             "graph": "",
-            "formula": "x^2:9-y^2:4 = 1"
+            "formula": "y = |2-x|"
         }
     ],
     [
         {
             "set": 9,
-            "graph": "sqrt(1+pow(1/5*x,2))",
-            "formula": "x^2:25-y^2= 1"
+            "graph": "cot(x)",
+            "formula": "y = cot(x)"
         },
         {
-            "graph": "-sqrt(1+pow(1/5*x,2))",
-            "formula": "-x^2:25-y^2 = 1"
+            "graph": "tan(x)",
+            "formula": "y = tan(x)"
         },
         {
-            "graph": "cos(2*P/x)",
-            "formula": "y = cos(2π:x)"
+            "graph": "-pow(x,3)",
+            "formula": "y = -x^3"
         },
         {
             "graph": "",
-            "formula": "y = cos(π:x)"
+            "formula": "y = x^3"
         }
     ],
     [
-        { "set": 10, "graph": "pow(x,3)", "formula": " y = x^3" },
         {
-            "graph": "pow(x,3)-2",
-            "formula": "y = x^3-2"
+            "set": 9,
+            "graph": "sqrt(pow(x,2)/4-4)",
+            "formula": "\\frac{x^2}{16}-\\frac{y^2}{4} = 1"
         },
         {
-            "graph": "2*x",
-            "formula": "y = 2x"
+            "graph": "sqrt(4-pow(x,2))",
+            "formula": "x^2+y^2 = 4"
+        },
+        {
+            "graph": "sqrt(4-pow(x,2)/4)",
+            "formula": "\\frac{x^2}{16}+\\frac{y^2}{4} = 1"
         },
         {
             "graph": "",
-            "formula": "y = \\sqrt{x}"
+            "formula": "x^2+y^2 = 16"
         }
     ]
 ]

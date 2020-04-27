@@ -2,33 +2,85 @@ body {
     background-color: lightskyblue;
 }
 
-.mathjax {
-    color: blue;
-    font-size: 2em;
+#main {
+    display: grid;
+    grid-template-columns: 1fr 9fr 3fr;
 }
 
-#app {
-    display: flex;
+/* progressBar */
+#progressBar {
+    justify-self: center;
+    align-self: center;
+    width: 15px;
+    height: 800px;
+    margin: 18px;
+    border: solid black;
 }
 
+#progress {
+    width: 15px;
+    height: 20%;
+    background-color: lime;
+}
+
+/* board */
 #board {
     width: 900px;
     height: 900px;
+    margin: 18px;
 }
 
 #board_navigationbar {
     visibility: hidden;
 }
 
-.equationDiv {
-    background-color: hotpink;
+/* rightside */
+#rightSide {
+    height: 900px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
 }
 
-.equations {
-    color: darkslategrey;
-    width: 100px;
-    height: 33px;
-    /* background-color: #12542366; */
+/* formulas */
+
+#formulasContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.formulasDivs {
+    height: 50px;
+    width: max-content;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px 15px 5px 15px;
+    margin: 20px;
+    padding: 10px;
+    /* transform: translate(-50%, -50%); */
+}
+
+.formulas {
+    font-size: 2em;
+}
+
+.border {
+    border: solid black;
+}
+
+.blue {
+    background-color: #00ccff;
+}
+.red {
+    background-color: #ff3366;
+}
+.orange {
+    background-color: #ffcc33;
+}
+.green {
+    background-color: #66ff33;
 }
 
 .disable-selection {
@@ -39,16 +91,66 @@ body {
     -webkit-touch-callout: none; /* Disable Android and iOS callouts*/
 }
 
-#pointBoard {
-    width: 100px;
-    height: 100px;
-    background-color: hotpink;
+/* level and points */
+#levelPoints {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-/* .invisible {
-    visibility: hidden;
-} */
+#levelHeader {
+    font-size: 3em;
+    font-family: "Corben", cursive;
+    color: lime;
+    -webkit-text-stroke-width: 2px;
+    -webkit-text-stroke-color: rgb(167, 16, 187);
+    /* text-shadow: 1px 1px 3px hotpink, -1px -1px 3px hotpink,
+        1px -1px 3px hotpink, -1px 1px 3px hotpink; */
+}
 
-.visible {
-    visibility: visible;
+#pointBoard {
+    width: 300px;
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* justify-content: center; */
+}
+
+h2 {
+    font-family: "Corben", cursive;
+    color: rgb(203, 138, 206);
+    -webkit-text-stroke-width: 3px;
+    -webkit-text-stroke-color: rgb(167, 16, 187);
+}
+
+#pointcounter {
+    font-size: 4em;
+    font-family: "Corben", cursive;
+    color: rgb(203, 138, 206);
+    -webkit-text-stroke-width: 3px;
+    -webkit-text-stroke-color: rgb(167, 16, 187);
+    padding: 0;
+    margin: 0;
+}
+
+/* finalModal */
+#finalModal {
+    position: fixed;
+    grid-column-start: 2;
+    grid-column-end: 3;
+    min-height: 85vh;
+    min-width: 85vw;
+    background-color: seagreen;
+    top: 20;
+    bottom: 20;
+    left: 20;
+    right: 20;
+    display: flex;
+    flex-direction: column;
+    z-index: 2;
+}
+
+.link {
+    text-decoration: none;
 }

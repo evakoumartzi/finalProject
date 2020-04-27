@@ -5,7 +5,7 @@ export default function Formula(props) {
     // console.log("props", props);
     return (
         <Context input="tex">
-            <h4 className="equations handle mathjax">
+            <h4 className="formulas">
                 <Node inline>{props.formula}</Node>
             </h4>
         </Context>
