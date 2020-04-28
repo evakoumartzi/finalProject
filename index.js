@@ -21,6 +21,7 @@ app.get("/highScores", async function (req, res) {
     try {
         let response = await db.getHighScores();
         res.json(response.rows);
+        console.log(response.rows);
     } catch (err) {
         console.log("error in get High scores", err);
         res.sendStatus(500);
@@ -46,34 +47,6 @@ app.post("/newScore/:name/:score", async (req, res) => {
     }
 });
 
-// app.get("/welcome", function (req, res) {
-//     console.log("welcome route");
-//     if (!req.session.user) {
-//         console.log("user not logged in", req.session.user);
-//         res.sendFile(__dirname + "/index.html");
-//     } else {
-//         console.log("redirecting to /");
-//         res.redirect("/");
-//     }
-// });
-
-// app.get("*", function (req, res) {
-//     console.log("**** star route ****", req.session.user != undefined);
-//     if (req.session.user) {
-//         console.log("user logged in");
-//         res.sendFile(__dirname + "/index.html");
-//     } else {
-//         console.log("redirecting to welcome", req.session.user);
-//         res.redirect("/welcome");
-//     }
-// });
-
 app.listen(8080, function () {
     console.log("I'm listening.");
 });
-
-/////////////////////////////////////////////////////
-
-// window.d3 = require("d3");
-// import d3 from "d3";
-// window.d3 = d3;

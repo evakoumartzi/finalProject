@@ -15,6 +15,7 @@ export default function FinalModal(pointCounter = pointCounter) {
                 const { data } = await axios.get(`/highScores`);
 
                 setHighScores(data);
+                console.log("high scores:", data);
             } catch (err) {
                 console.log("error in highScores", err);
             }
@@ -56,14 +57,18 @@ export default function FinalModal(pointCounter = pointCounter) {
 
     return (
         <div id="finalModal">
-            <h4> You are {pointCounter.points}% math genious!</h4>
+            <h4 id="finalheader">
+                You have &nbsp;{pointCounter.points}% &nbsp; function fever!
+            </h4>
             {inputField && (
                 <div id="addName">
                     <input
                         onChange={handleChange}
                         placeholder="add your name here"
                     ></input>
-                    <button onClick={submit}>add</button>
+                    <button className="formulasDivs green" onClick={submit}>
+                        add
+                    </button>
                 </div>
             )}
 
@@ -71,21 +76,32 @@ export default function FinalModal(pointCounter = pointCounter) {
                 <div id="scoreBoard">
                     {highScores.map((score) => {
                         return (
-                            // <div className="scoreBoard">
-                            <h3
-                                key={`${score.name}_${score.score}`}
-                                className="highScores"
-                            >
-                                {score.name}: {score.score}
-                            </h3>
-                            // </div>
+                            <div key={`${score.name}`} id="highScore">
+                                <h3
+                                    key={`${score.name}`}
+                                    className="highScores"
+                                >
+                                    {score.name}
+                                </h3>
+                                <h3
+                                    key={`${score.score}`}
+                                    className="highScores"
+                                >
+                                    {score.score} &nbsp;%
+                                </h3>
+                            </div>
                         );
                     })}
+                    <button className="formulasDivs pink">
+                        <a href="/" className="link">
+                            play again
+                        </a>
+                    </button>
                 </div>
             )}
 
             {/* <button onClick={startGame}>restart</button> */}
-            <button>
+            {/* <button>
                 <a href="/hallOfFame" className="link">
                     famous equations fever
                 </a>
@@ -94,7 +110,7 @@ export default function FinalModal(pointCounter = pointCounter) {
                 <a href="/adjust" className="link">
                     equation fever
                 </a>
-            </button>
+            </button> */}
         </div>
     );
 }

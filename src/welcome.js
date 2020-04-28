@@ -3,13 +3,13 @@ import React from "react";
 
 export default function Welcome() {
     return (
-        <div>
-            <h1>Welcome!</h1>
-            {/* <Link to={"/"} key={user.id}>
-                <h2>Let's go</h2>
-            </Link> */}
-            <a href="/">
-                <h2>Show me the functions!</h2>
+        <div id="welcome">
+            <h2 id="mainHeader">
+                Function<br></br> Fever
+            </h2>
+
+            <a href="/" id="showMe">
+                <h2 className="link">Show me the equations! 🠞</h2>
             </a>
         </div>
     );

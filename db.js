@@ -8,7 +8,7 @@ module.exports.getHighScores = () => {
     const q = `
     SELECT * FROM highScores
     ORDER BY score DESC
-    LIMIT 20 ;`;
+    LIMIT 10 ;`;
 
     const params = [];
     return db.query(q, params);

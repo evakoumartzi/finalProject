@@ -170,21 +170,21 @@
     ],
     [
         {
-            "set": 9,
-            "graph": "sqrt(pow(x,2)/4-4)",
-            "formula": "\\frac{x^2}{16}-\\frac{y^2}{4} = 1"
+            "set": 10,
+            "graph": "1/(pow(x,2)-4)",
+            "formula": "y = \\frac{1}{x^2-4}"
         },
         {
-            "graph": "sqrt(4-pow(x,2))",
-            "formula": "x^2+y^2 = 4"
+            "graph": "-1/(pow(x,2)-8)",
+            "formula": "y = \\frac{-1}{x^2-8}"
         },
         {
-            "graph": "sqrt(4-pow(x,2)/4)",
-            "formula": "\\frac{x^2}{16}+\\frac{y^2}{4} = 1"
+            "graph": "(x+2)/(x+4)",
+            "formula": "y = \\frac{x+2}{x+4}"
         },
         {
             "graph": "",
-            "formula": "x^2+y^2 = 16"
+            "formula": "y = \\frac{x+4}{x+2}"
         }
     ]
 ]

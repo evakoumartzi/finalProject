@@ -1,10 +1,42 @@
 body {
-    background-color: lightskyblue;
+    background-image: url("/milky.jpg");
 }
 
 #main {
     display: grid;
     grid-template-columns: 1fr 9fr 3fr;
+}
+
+/* welcome page */
+
+#welcome {
+    background-image: url("/cartesian.png");
+    position: fixed;
+    background-size: cover;
+    height: 100vh;
+    min-width: 100vw;
+    display: grid;
+    grid-template-columns: 0.9fr 1fr 1fr;
+    grid-template-rows: 0.9fr 1fr 1fr;
+}
+
+#mainHeader {
+    font-size: 5em;
+    grid-column-start: 2;
+    grid-column-end: 4;
+
+    grid-row-start: 2;
+}
+
+#showMe {
+    margin-top: 0;
+    padding-top: 0;
+    justify-self: center;
+    align-self: end;
+    font-size: 2em;
+    grid-column-start: 2;
+    grid-column-end: 4;
+    grid-row-start: 3;
 }
 
 /* progressBar */
@@ -34,14 +66,6 @@ body {
     visibility: hidden;
 }
 
-/* rightside */
-#rightSide {
-    height: 900px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-}
-
 /* formulas */
 
 #formulasContainer {
@@ -56,10 +80,9 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    border-radius: 5px 15px 5px 15px;
     margin: 20px;
     padding: 10px;
-    /* transform: translate(-50%, -50%); */
+    border-radius: 5px 15px 5px 15px;
 }
 
 .formulas {
@@ -70,17 +93,21 @@ body {
     border: solid black;
 }
 
+.purple {
+    background-image: linear-gradient(#5326d9, #866bd4);
+}
+
 .blue {
-    background-color: #00ccff;
-}
-.red {
-    background-color: #ff3366;
-}
-.orange {
-    background-color: #ffcc33;
+    background-color: #0099ff;
+    background-image: linear-gradient(#0099ff, #6fc4fd);
 }
 .green {
-    background-color: #66ff33;
+    background-color: #00ff99;
+    background-image: linear-gradient(#00ff99, #6ffbc3);
+}
+.pink {
+    background-color: #cc33cc;
+    background-image: linear-gradient(#cc33cc, #c36dc3);
 }
 
 .disable-selection {
@@ -91,7 +118,18 @@ body {
     -webkit-touch-callout: none; /* Disable Android and iOS callouts*/
 }
 
+.active {
+    border: solid white;
+}
+
 /* level and points */
+#rightSide {
+    height: 900px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
 #levelPoints {
     display: flex;
     flex-direction: column;
@@ -99,7 +137,7 @@ body {
 }
 
 #levelHeader {
-    font-size: 3em;
+    font-size: 4em;
     font-family: "Corben", cursive;
     color: lime;
     -webkit-text-stroke-width: 2px;
@@ -109,15 +147,24 @@ body {
 }
 
 #pointBoard {
-    width: 300px;
+    width: 400px;
     height: 300px;
     display: flex;
-    flex-direction: column;
-    align-items: center;
+    align-items: space-between;
+    /* flex-direction: column;
+    align-items: center; */
     /* justify-content: center; */
 }
 
 h2 {
+    font-family: "Corben", cursive;
+    color: rgb(203, 138, 206);
+    -webkit-text-stroke-width: 3px;
+    -webkit-text-stroke-color: rgb(167, 16, 187);
+}
+
+#points {
+    font-size: 2.5em;
     font-family: "Corben", cursive;
     color: rgb(203, 138, 206);
     -webkit-text-stroke-width: 3px;
@@ -137,20 +184,67 @@ h2 {
 /* finalModal */
 #finalModal {
     position: fixed;
-    grid-column-start: 2;
-    grid-column-end: 3;
-    min-height: 85vh;
-    min-width: 85vw;
-    background-color: seagreen;
-    top: 20;
-    bottom: 20;
-    left: 20;
-    right: 20;
+    background-size: cover;
+    min-height: 100vh;
+    min-width: 100vw;
+    background-image: url("/milky.jpg");
     display: flex;
     flex-direction: column;
+    align-items: center;
     z-index: 2;
+}
+
+#addName {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+input {
+    width: 300px;
+    height: 20px;
+    font-size: large;
+}
+
+button {
+    font-size: 1em;
+    font-weight: bold;
+    color: rgb(167, 16, 187);
+}
+
+#finalheader {
+    font-size: 3em;
+    font-family: "Corben", cursive;
+    color: lime;
+    -webkit-text-stroke-width: 2px;
+    -webkit-text-stroke-color: rgb(167, 16, 187);
 }
 
 .link {
     text-decoration: none;
+}
+
+#scoreBoard {
+    background-color: lime;
+    background-image: linear-gradient(lime, rgb(197, 250, 197));
+    padding: 15px;
+    border-radius: 35px 15px 35px 15px;
+    width: 550px;
+    height: 600px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#highScore {
+    display: flex;
+    width: 90%;
+    justify-content: space-between;
+}
+
+.highScores {
+    margin: 5px;
+    color: rgb(167, 16, 187);
+    font-size: 2em;
 }

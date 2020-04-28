@@ -12,15 +12,16 @@ let formulasDivs = document.querySelectorAll(".formulasDivs");
 console.log("formulasDivs", formulasDivs);
 export default function Board() {
     const [formulas, setFormulas] = useState([]);
+    // const [formulaPicked, setFormulaPicked] = useState([]);
     let [points, setPoints] = useState([]);
 
     // const [showNext, setShowNext] = useState(false);
     const [showFinal, setShowFinal] = useState(false);
     let board;
     let plots = [];
-    let graphColorArray = [];
-    let functionColorArray = ["red", "green", "orange", "blue"];
-    let functionColorKey = ["#ff3366", "#66ff33", "#ffcc33", "#00ccff"];
+    let graphColorArray = ["darkgreen", "limegreen", "greenyellow"];
+    let functionColorArray = ["purple", "green", "pink", "blue"];
+    let functionColorKey = ["#5326d9", "#00ff99", "#cc33cc", "#0099ff"];
     let solvedArray = [];
 
     useEffect(() => {
@@ -48,7 +49,7 @@ export default function Board() {
         mistakesCounter = 0;
         bonusPoint = true;
         levelIndex = 0;
-        graphColorArray = shuffle(["#0000FF", "#0099FF", "#00FF99"]);
+        // graphColorArray = shuffle(["#0000FF", "#0099FF", "#00FF99"]);
         solvedArray = [false, false, false];
 
         boardInit();
@@ -137,7 +138,7 @@ export default function Board() {
             mistakesCounter = 0;
             bonusPoint = true;
             levelIndex++;
-            graphColorArray = shuffle(["#0000FF", "#0099FF", "#00FF99"]);
+            graphColorArray = shuffle(["darkgreen", "limegreen", "lawngreen"]);
             solvedArray = [false, false, false];
             loadFunctions(levelIndex);
         } else {
@@ -150,13 +151,16 @@ export default function Board() {
             (element) => element == graph
         );
         const formulaIndex = formArray.findIndex((element) => element == funct);
-        // console.log(
-        //     "indeeex",
-        //     graphIndex,
-        //     solvedArray[graphIndex],
-        //     "form color",
-        //     functionColorArray[formulaIndex]
-        // );
+        console.log(
+            "indeeex",
+            graphIndex,
+            solvedArray[graphIndex],
+            "form index&color",
+            formulaIndex,
+            "funct",
+            funct,
+            functionColorArray[formulaIndex]
+        );
         if (solvedArray[graphIndex] == false) {
             //MATCH
             if (equations[levelIndex][graphIndex].formula == funct) {
@@ -169,19 +173,18 @@ export default function Board() {
                         solvedAmount++;
                     }
                 }
-                // formulasDivs[0].classList.add("border");
 
                 //POINT SYSTEM
                 const pointsArray = [4, 3, 2];
                 if (solvedAmount - 1 + mistakesCounter < 3) {
                     pointCounter +=
                         pointsArray[solvedAmount - 1 + mistakesCounter];
-                    // console.log(
-                    //     `made ${mistakesCounter} mistakes, adding ${
-                    //         pointsArray[solvedAmount - 1 + mistakesCounter]
-                    //     } points`
-                    // );
-                    console.log("pointCounter", pointCounter);
+                    console.log(
+                        `made ${mistakesCounter} mistakes, adding ${
+                            pointsArray[solvedAmount - 1 + mistakesCounter]
+                        } points`
+                    );
+                    // console.log("pointCounter", pointCounter);
                     setPoints(pointCounter);
                 }
                 plots[graphIndex].setAttribute({
@@ -193,7 +196,10 @@ export default function Board() {
                 console.log("solvedAmount:", solvedAmount);
                 // END GAME
                 if (solvedAmount == 3) {
-                    if (bonusPoint) pointCounter++;
+                    if (bonusPoint) {
+                        console.log("awarding bonus point", pointCounter, "+1");
+                        pointCounter++;
+                    }
                     if (levelIndex < levelAmount) {
                         nextLevel();
                     } else {
@@ -220,45 +226,37 @@ export default function Board() {
 
     return (
         <div id="main">
-            {showFinal && (
-                // <div id="finalModal">
-                //     <h4> You are {pointCounter}% math genious!</h4>
-                //     <button onClick={startGame}>restart</button>
-                //     <button>
-                //         <a href="/hallOfFame" className="link">
-                //             famous equations fever
-                //         </a>
-                //     </button>
-                //     <button>
-                //         <a href="/adjust" className="link">
-                //             equation fever
-                //         </a>
-                //     </button>
-                // </div>
-                <FinalModal points={pointCounter} />
-            )}
-            <div id="progressBar">
+            {showFinal && <FinalModal points={pointCounter} />}
+            {/* <div id="progressBar">
                 <div id="progress"></div>
-            </div>
+            </div> */}
 
             <div id="board" className="jxgbox"></div>
 
             <div id="rightSide">
                 <div id="levelPoints">
-                    <h1 id="levelHeader">LEVEL {levelIndex + 1} </h1>
-                    <div id="pointBoard">
-                        <h2>points</h2>
-                        {points == 0 && <h2 id="pointcounter">0</h2>}
-                        <h2 id="pointcounter">{points}</h2>
-                    </div>
+                    <h1 id="levelHeader">LEVEL &nbsp;{levelIndex + 1} </h1>
+                    {points == 0 && (
+                        <div id="pointBoard">
+                            <h2 id="points">points:&nbsp;&nbsp;</h2>
+                            <div id="pointcounter"> 0</div>
+                        </div>
+                    )}
+                    {points != 0 && (
+                        <div id="pointBoard">
+                            <h2 id="points">points:&nbsp;&nbsp;</h2>
+                            <div id="pointcounter">{points}</div>
+                        </div>
+                    )}
                 </div>
-
                 <div id="formulasContainer">
                     {formulas.map((i, index) => {
                         return (
                             <div
                                 key={i}
-                                className={`formulasDivs disable-selection ${functionColorArray[index]}`}
+                                className={`formulasDivs disable-selection ${
+                                    functionColorArray[index]
+                                } ${formulaPicked == i ? "active" : ""}`}
                                 onMouseDown={() => handleEquationSelect(i)}
                             >
                                 <Formulas formula={i} />

@@ -1,0 +1,19 @@
+[
+    {
+        "set": 10,
+        "graph": "sqrt(pow(x,2)/4-4)",
+        "formula": "\\frac{x^2}{16}-\\frac{y^2}{4} = 1"
+    },
+    {
+        "graph": "sqrt(4-pow(x,2))",
+        "formula": "x^2+y^2 = 4"
+    },
+    {
+        "graph": "sqrt(4-pow(x,2)/4)",
+        "formula": "\\frac{x^2}{16}+\\frac{y^2}{4} = 1"
+    },
+    {
+        "graph": "",
+        "formula": "x^2+y^2 = 16"
+    }
+]
