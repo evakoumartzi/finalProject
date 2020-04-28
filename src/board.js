@@ -8,10 +8,12 @@ let graphPicked, formulaPicked;
 let pointCounter, mistakesCounter, bonusPoint;
 const levelAmount = 9;
 let formArray = [];
+let solvedArray = [];
 let formulasDivs = document.querySelectorAll(".formulasDivs");
 console.log("formulasDivs", formulasDivs);
 export default function Board() {
     const [formulas, setFormulas] = useState([]);
+    const [update, setUpdate] = useState(0);
     // const [formulaPicked, setFormulaPicked] = useState([]);
     let [points, setPoints] = useState([]);
 
@@ -22,7 +24,6 @@ export default function Board() {
     let graphColorArray = ["darkgreen", "limegreen", "greenyellow"];
     let functionColorArray = ["purple", "green", "pink", "blue"];
     let functionColorKey = ["#5326d9", "#00ff99", "#cc33cc", "#0099ff"];
-    let solvedArray = [];
 
     useEffect(() => {
         startGame();
@@ -146,6 +147,20 @@ export default function Board() {
         }
     }
 
+    const functIndex = (funct) => {
+        let formulaIndex;
+        for (let i = 0; i < 4; i++) {
+            if (equations[levelIndex][i].formula == funct) {
+                formulaIndex = i;
+            }
+            // console.log("downloaded all my appli...cations");
+        }
+        // const formulaIndex = formulas.findIndex((element) => element == funct);
+        if (solvedArray[formulaIndex])
+            console.log(funct, formulaIndex, solvedArray[formulaIndex]);
+        return solvedArray[formulaIndex];
+    };
+
     const checkMatch = (graph, funct) => {
         const graphIndex = graphColorArray.findIndex(
             (element) => element == graph
@@ -171,6 +186,7 @@ export default function Board() {
                 for (let elem in solvedArray) {
                     if (solvedArray[elem] == true) {
                         solvedAmount++;
+                        setUpdate(update + 1);
                     }
                 }
 
@@ -201,7 +217,7 @@ export default function Board() {
                         pointCounter++;
                     }
                     if (levelIndex < levelAmount) {
-                        nextLevel();
+                        setTimeout(nextLevel, 1000);
                     } else {
                         setShowFinal(true);
                     }
@@ -209,7 +225,7 @@ export default function Board() {
             } else {
                 mistakesCounter++;
                 graphPicked = null;
-                formulaPicked = null;
+                // formulaPicked = null;
                 console.log("mistakes", mistakesCounter);
             }
         }
@@ -221,6 +237,7 @@ export default function Board() {
 
     const handleEquationSelect = (eq) => {
         console.log(eq);
+        setUpdate(update + 1);
         formulaPicked = eq;
     };
 
@@ -251,21 +268,26 @@ export default function Board() {
                 </div>
                 <div id="formulasContainer">
                     {formulas.map((i, index) => {
+                        {
+                            console.log("solved", solvedArray);
+                        }
                         return (
                             <div
                                 key={i}
                                 className={`formulasDivs disable-selection ${
                                     functionColorArray[index]
-                                } ${formulaPicked == i ? "active" : ""}`}
+                                } ${formulaPicked == i ? "active" : ""} ${
+                                    functIndex(i) ? "solved" : ""
+                                }`}
                                 onMouseDown={() => handleEquationSelect(i)}
                             >
                                 <Formulas formula={i} />
                             </div>
                         );
                     })}
-                    <button onClick={handleClick} className="invisible">
+                    {/* <button onClick={handleClick} className="invisible">
                         admin load next
-                    </button>
+                    </button> */}
                 </div>
             </div>
         </div>

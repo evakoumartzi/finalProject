@@ -122,6 +122,11 @@ body {
     border: solid white;
 }
 
+.solved {
+    box-shadow: 3px 3px 13px white, -3px -3px 13px white, 3px -3px 13px white,
+        -3px 3px 13px white;
+}
+
 /* level and points */
 #rightSide {
     height: 900px;
