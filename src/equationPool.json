@@ -3,19 +3,19 @@
         {
             "set": 1,
             "graph": "x*1",
-            "formula": "y = x"
+            "formula": "f(x) = x"
         },
         {
             "graph": "-x",
-            "formula": "y = -x"
+            "formula": "f(x) = -x"
         },
         {
             "graph": "4",
-            "formula": " y = 4 "
+            "formula": " f(x) = 4 "
         },
         {
             "graph": "",
-            "formula": " x = 4 "
+            "formula": " f(x) = 0 "
         }
     ],
 
@@ -23,110 +23,110 @@
         {
             "set": 2,
             "graph": "pow(x,2)+2",
-            "formula": "y = x^2+2"
+            "formula": "f(x) = x^2+2"
         },
         {
             "graph": "-pow(x,2)+2",
-            "formula": "y = -x^2+2"
+            "formula": "f(x) = -x^2+2"
         },
         {
             "graph": "pow(x,2)-2",
-            "formula": "y = x^2-2"
+            "formula": "f(x) = x^2-2"
         },
         {
             "graph": "",
-            "formula": "y = -x^2-2"
+            "formula": "f(x) = -x^2-2"
         }
     ],
     [
         {
             "set": 3,
             "graph": "2*x-5",
-            "formula": "y = 2x-5"
+            "formula": "f(x) = 2x-5"
         },
         {
             "graph": "-2*x+5",
-            "formula": "y = -2x+5"
+            "formula": "f(x) = -2x+5"
         },
         {
             "graph": "2*x+5",
-            "formula": "y = 2x+5"
+            "formula": "f(x) = 2x+5"
         },
         {
             "graph": "",
-            "formula": "y = -2x-5"
+            "formula": "f(x) = -2x-5"
         }
     ],
     [
         {
             "set": 4,
             "graph": "pow(3,x)",
-            "formula": "y = 3^x"
+            "formula": "f(x) = 3^x"
         },
         {
             "graph": "sqrt(x+3)",
-            "formula": "y =\\sqrt{x+3}"
+            "formula": "f(x) =\\sqrt{x+3}"
         },
         {
             "graph": "sqrt(x)+3",
-            "formula": "y =\\sqrt{x}+3"
+            "formula": "f(x) =\\sqrt{x}+3"
         },
         {
             "graph": "",
-            "formula": "y = 3^{-x}"
+            "formula": "f(x) = 3^{-x}"
         }
     ],
     [
         {
             "set": 5,
             "graph": "cos(3*x)",
-            "formula": "y = cos(3x)"
+            "formula": "f(x) = cos(3x)"
         },
         {
             "graph": "3*cos(x)",
-            "formula": "y = 3cos(x)"
+            "formula": "f(x) = 3cos(x)"
         },
         {
             "graph": "3*sin(x)",
-            "formula": "y = 3sin(x)"
+            "formula": "f(x) = 3sin(x)"
         },
         {
             "graph": "",
-            "formula": "y = sin(3x)"
+            "formula": "f(x) = sin(3x)"
         }
     ],
     [
         {
             "set": 6,
             "graph": "pow(x,3)",
-            "formula": "y = x^3"
+            "formula": "f(x) = x^3"
         },
         {
             "graph": "pow(x,4)-2*pow(x,2)+1",
-            "formula": "y = x^4-2x^2+1"
+            "formula": "f(x) = x^4-2x^2+1"
         },
         {
             "graph": "1/x",
-            "formula": "y = \\frac{1}{x}"
+            "formula": "f(x) = \\frac{1}{x}"
         },
         {
             "graph": "",
-            "formula": "x^2+y^2=1"
+            "formula": "f(x) = \\frac{1}{x^3}"
         }
     ],
     [
-        { "set": 7, "graph": "pow(2.718281,x)", "formula": "y = e^x" },
+        { "set": 7, "graph": "pow(2.718281,x)", "formula": "f(x) = e^x" },
         {
             "graph": "pow(2.718281,-x)",
-            "formula": "y = e^{-x}"
+            "formula": "f(x) = e^{-x}"
         },
         {
             "graph": "ln(x)",
-            "formula": "y=\\ln(x)"
+            "formula": "f(x) =\\ln(x)"
         },
         {
             "graph": "",
-            "formula": "y=\\ln(-x)"
+            "formula": "f(x) =\\ln(-x)"
         }
     ],
 
@@ -134,57 +134,57 @@
         {
             "set": 8,
             "graph": "abs(x+2)",
-            "formula": "y = |x+2|"
+            "formula": "f(x) = |x+2|"
         },
         {
             "graph": "abs(x-2)",
-            "formula": "y = |x-2|"
+            "formula": "f(x) = |x-2|"
         },
         {
             "graph": "2*abs(x)",
-            "formula": "y = 2|x|"
+            "formula": "f(x) = 2|x|"
         },
         {
             "graph": "",
-            "formula": "y = |2-x|"
+            "formula": "f(x) = |2-x|"
         }
     ],
     [
         {
             "set": 9,
             "graph": "cot(x)",
-            "formula": "y = cot(x)"
+            "formula": "f(x) = cot(x)"
         },
         {
             "graph": "tan(x)",
-            "formula": "y = tan(x)"
+            "formula": "f(x) = tan(x)"
         },
         {
             "graph": "-pow(x,3)",
-            "formula": "y = -x^3"
+            "formula": "f(x) = -x^3"
         },
         {
             "graph": "",
-            "formula": "y = x^3"
+            "formula": "f(x) = x^3"
         }
     ],
     [
         {
             "set": 10,
             "graph": "1/(pow(x,2)-4)",
-            "formula": "y = \\frac{1}{x^2-4}"
+            "formula": "f(x) = \\frac{1}{x^2-4}"
         },
         {
             "graph": "-1/(pow(x,2)-8)",
-            "formula": "y = \\frac{-1}{x^2-8}"
+            "formula": "f(x) = \\frac{-1}{x^2-8}"
         },
         {
             "graph": "(x+2)/(x+4)",
-            "formula": "y = \\frac{x+2}{x+4}"
+            "formula": "f(x) = \\frac{x+2}{x+4}"
         },
         {
             "graph": "",
-            "formula": "y = \\frac{x+4}{x+2}"
+            "formula": "f(x) = \\frac{x+4}{x+2}"
         }
     ]
 ]

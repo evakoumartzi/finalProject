@@ -112,7 +112,7 @@ export default function Board() {
                     {
                         withLabel: false,
                         strokeColor: graphColorArray[x],
-                        strokeWidth: 5,
+                        strokeWidth: 7,
 
                         name: `${functionArray[x]}`,
                     }

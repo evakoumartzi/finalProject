@@ -4,7 +4,7 @@ body {
 
 #main {
     display: grid;
-    grid-template-columns: 1fr 9fr 3fr;
+    grid-template-columns: 1fr 11fr 3fr;
 }
 
 /* welcome page */
@@ -142,8 +142,6 @@ body {
     color: lime;
     -webkit-text-stroke-width: 2px;
     -webkit-text-stroke-color: rgb(167, 16, 187);
-    /* text-shadow: 1px 1px 3px hotpink, -1px -1px 3px hotpink,
-        1px -1px 3px hotpink, -1px 1px 3px hotpink; */
 }
 
 #pointBoard {
@@ -151,9 +149,6 @@ body {
     height: 300px;
     display: flex;
     align-items: space-between;
-    /* flex-direction: column;
-    align-items: center; */
-    /* justify-content: center; */
 }
 
 h2 {

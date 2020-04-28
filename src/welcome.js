@@ -9,7 +9,7 @@ export default function Welcome() {
             </h2>
 
             <a href="/" id="showMe">
-                <h2 className="link">Show me the equations! 🠞</h2>
+                <h2 className="link">Show me the functionds! 🠞</h2>
             </a>
         </div>
     );
